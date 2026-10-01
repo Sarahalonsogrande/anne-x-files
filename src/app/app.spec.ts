@@ -1,10 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
+import { mockTranslateService } from '../test-utils/mocks';
+import { MockTranslatePipe } from '../test-utils/mock-translate-pipe';
+import { TranslateService } from '@ngx-translate/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('App', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [App],
+      imports: [App, RouterTestingModule, MockTranslatePipe],
+      providers: [{ provide: TranslateService, useValue: mockTranslateService }]
     }).compileComponents();
   });
 
@@ -18,6 +23,6 @@ describe('App', () => {
     const fixture = TestBed.createComponent(App);
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, annes-birthday');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, anne-x-files');
   });
 });

@@ -1,0 +1,637 @@
+/*
+ * Theme variables — normalized and semantic tokens
+ * - RGB tokens for alpha usage
+ * - Small palette per color family (5 steps)
+ * - limited transitions and prefers-reduced-motion support via multiplier
+ * - Accessible defaults
+*/
+
+:root {
+   /* PRIMARY (Amber) */
+   --primary-h: 45;
+   --primary-s: 100%;
+
+   /* Raw lightness scale (private) */
+   --primary-l-1: 92%;
+   --primary-l-2: 82%;
+   --primary-l-3: 58%;
+   /* Base ≈ #ffca28 */
+   --primary-l-4: 42%;
+   --primary-l-5: 26%;
+
+   /* Public primary tokens */
+   --color-primary-lighter: hsl(var(--primary-h) var(--primary-s) var(--primary-l-1));
+   --color-primary-light: hsl(var(--primary-h) var(--primary-s) var(--primary-l-2));
+   --color-primary-base: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-dark: hsl(var(--primary-h) var(--primary-s) var(--primary-l-4));
+   --color-primary-darker: hsl(var(--primary-h) var(--primary-s) var(--primary-l-5));
+
+   /* Shorthand */
+   --color-primary: var(--color-primary-base);
+
+   /* RGB helper for alpha usage */
+   --color-primary-rgb: 255 202 40;
+
+   /* ACCENT (Soft Blue) */
+   --accent-h: 210;
+   --accent-s: 70%;
+
+   /* Raw lightness scale (private) */
+   --accent-l-1: 96%;
+   --accent-l-2: 82%;
+   --accent-l-3: 56%;
+   /* Base ≈ #42a5f5 */
+   --accent-l-4: 40%;
+   --accent-l-5: 24%;
+
+   /* Public accent tokens */
+   --color-accent-lighter: hsl(var(--accent-h) var(--accent-s) var(--accent-l-1));
+   --color-accent-light: hsl(var(--accent-h) var(--accent-s) var(--accent-l-2));
+   --color-accent-base: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+   --color-accent-dark: hsl(var(--accent-h) var(--accent-s) var(--accent-l-4));
+   --color-accent-darker: hsl(var(--accent-h) var(--accent-s) var(--accent-l-5));
+
+   --color-accent: var(--color-accent-base);
+   --color-accent-rgb: 66 165 245;
+
+   /* PRIMARY (warmer orange, darker for better contrast) */
+   --primary-h: 35;
+   /* shift towards orange */
+   --primary-s: 95%;
+   /* Raw lightness scale (private) */
+   --primary-l-1: 88%;
+   --primary-l-2: 76%;
+   --primary-l-3: 46%;
+   /* Base — darker orange for improved contrast */
+   --primary-l-4: 34%;
+   --primary-l-5: 22%;
+
+   --color-success: hsl(var(--success-h) var(--success-s) var(--success-l));
+   --color-success-dark: hsl(var(--success-h) var(--success-s) 30%);
+
+   /* Warning ≈ #f2930d */
+   --warning-h: 35;
+   --warning-s: 90%;
+   --warning-l: 50%;
+
+   --color-warning: hsl(var(--warning-h) var(--warning-s) var(--warning-l));
+   --color-warning-dark: hsl(var(--warning-h) var(--warning-s) 40%);
+   /* RGB helper for alpha usage — keep in sync with the HSL base above */
+   --color-primary-rgb: 255 140 0;
+   /* Danger ≈ #c91d1d */
+   --danger-h: 0;
+   --danger-s: 75%;
+   --danger-l: 45%;
+
+   --color-danger: hsl(var(--danger-h) var(--danger-s) var(--danger-l));
+   --color-danger-dark: hsl(var(--danger-h) var(--danger-s) 35%);
+
+   /* SEMANTIC TOKENS */
+   --background: #ffffff;
+   --surface: #fafafa;
+   --text: #0b0b0b;
+   --muted: #6b6b6b;
+   --card-background: var(--surface);
+
+   /* ON-COLORS for accessible foregrounds
+      `--color-on-primary`: foreground color used on top of `--color-primary`.
+      Default set to `#000000` because the base primary in the light theme is
+      a bright amber (white has insufficient contrast against it). If you
+      change `--color-primary` to a darker hue, set this to `#ffffff` and
+      verify WCAG contrast (>= 4.5:1 for normal text).
+   */
+   --color-on-primary: #000000;
+   --color-on-surface: #0b0b0b;
+
+   /* UTILITY COLORS (Avoid in core UI components) */
+   --color-red: hsl(1, 83%, 63%);
+   --color-orange: hsl(36, 100%, 50%);
+   --color-yellow: hsl(56, 91%, 73%);
+   --color-lime: hsl(73, 67%, 51%);
+   --color-green: hsl(123, 38%, 57%);
+   --color-azure: hsl(207, 90%, 61%);
+   --color-klein: hsl(221, 100%, 31%);
+   --color-magenta: hsl(323, 98%, 62%);
+   --color-neutral: hsl(200, 16%, 62%);
+
+   /* TYPOGRAPHY */
+   --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+   --font-size-base: 16px;
+   --line-height-base: 1.45;
+
+   /* SPCINGS */
+   --space-1: 4px;
+   --space-2: 8px;
+   --space-3: 16px;
+   --space-4: 24px;
+
+   /* BORDERS */
+   --border-subtle: hsl(210 10% 88%);
+   --border-strong: hsl(210 10% 75%);
+
+   /* RADIUS / SHADOWS / LAYERING */
+   --radius-sm: 6px;
+   --radius-md: 12px;
+   --radius-lg: 50%;
+   --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+   --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.12);
+
+   /* Z-INDEX */
+   --z-dropdown: 100;
+   --z-sticky: 200;
+   --z-modal: 1000;
+
+   /* ON-COLORS for accessible foregrounds */
+   --color-on-primary: #ffffff;
+   --motion-factor: 1.2;
+   --transition-fast: calc(180ms * var(--motion-factor)) ease;
+   --transition-smooth: calc(400ms * var(--motion-factor)) ease;
+
+   /* FOCUS RING OPACITY */
+   --focus-ring-alpha: 0.3;
+   --focus-ring-alpha-subtle: 0.16;
+}
+
+/*
+ *  THEMES:
+ * Data-theme & compatibility with html/body classes.
+*/
+
+/* DARK THEME #c0c7ce */
+:root[data-theme='dark'],
+html.dark,
+body.dark {
+   --primary-h: 210;
+   --primary-s: 12%;
+   --primary-l-3: 78%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 199 207 209;
+   --color-on-primary: #000000;
+
+   --accent-h: 210;
+   --accent-s: 60%;
+   --accent-l-3: 50%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   /* SEMANTIC TOKENS */
+   --background: #0b0b0b;
+   --surface: #111214;
+   --text: #ffffff;
+   --muted: #a9b0bb;
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+
+   /* ON-COLORS for accessible foregrounds */
+   --color-on-primary: #000000;
+   --color-on-surface: #fcfcfc;
+}
+
+/* GREEN THEME #68bb6c */
+:root[data-theme='green'],
+html.green,
+body.green {
+   /* Semantic overrides for green theme (light) */
+   --background: #ffffff;
+   --surface: #fafafa;
+   --primary-h: 123;
+   --primary-s: 38%;
+   --primary-l-3: 57%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 143 233 121;
+   --color-on-primary: #0b2a12;
+
+   --accent-h: 150;
+   /* Opcional: define un acento suave para el green theme */
+   --accent-s: 50%;
+   --accent-l-3: 50%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+   --text: #0b2a12;
+}
+
+/* PINK THEME #f0a8cc */
+:root[data-theme='pink'],
+html.pink,
+body.pink {
+   /* Semantic overrides for pink theme (light) */
+   --background: #ffffff;
+   --surface: #fafafa;
+   --primary-h: 330;
+   --primary-s: 70%;
+   --primary-l-3: 80%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 248 187 217;
+   --color-on-primary: #000000;
+
+   --accent-h: 320;
+   --accent-s: 60%;
+   --accent-l-3: 55%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+   --text: #2a2a2a;
+}
+
+/* BLUE THEME #99a6e6 */
+:root[data-theme='blue'],
+html.blue,
+body.blue {
+   /* Semantic overrides for blue theme (light) */
+   --background: #ffffff;
+   --surface: #fafafa;
+   --primary-h: 230;
+   --primary-s: 60%;
+   --primary-l-3: 75%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 187 194 248;
+   --color-on-primary: #03204a;
+
+   --accent-h: 260;
+   --accent-s: 45%;
+   --accent-l-3: 58%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+   --text: #0b254a;
+}
+
+
+
+
+
+
+
+/* DARK THEME */
+:root[data-theme='dark'],
+html.dark,
+body.dark {
+   --background: hsl(230 12% 6%);
+   --surface: hsl(230 15% 12%);
+   --text: #ffffff;
+   --muted: #a9b0bb;
+
+   --color-primary: #99a6e6;
+   --color-primary-rgb: 199 207 209;
+   --color-on-primary: #000000;
+
+   --card-background: var(--surface);
+}
+
+/* GREEN THEME */
+:root[data-theme='green'],
+html.green,
+body.green {
+   --primary-h: var(--green-h);
+   --primary-s: var(--green-s);
+   --primary-l-3: var(--green-l-3);
+
+   --color-primary: var(--color-green);
+   --color-primary-rgb: var(--color-green-rgb);
+   --color-on-primary: #0b2a12;
+
+   --card-background: rgb(var(--color-green-rgb) / 0.06);
+   --text: #0b2a12;
+}
+
+
+/* PINK THEME */
+:root[data-theme='pink'],
+html.pink,
+body.pink {
+   --primary-h: 330;
+   --primary-s: 70%;
+   --primary-l-3: 80%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 248 187 217;
+   --color-on-primary: #000000;
+
+   --accent-h: 320;
+   --accent-s: 60%;
+   --accent-l-3: 55%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+   --text: #2a2a2a;
+}
+
+/* BLUE THEME */
+:root[data-theme='blue'],
+html.blue,
+body.blue {
+   --primary-h: 230;
+   --primary-s: 60%;
+   --primary-l-3: 75%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 187 194 248;
+   --color-on-primary: #03204a;
+
+   --accent-h: 260;
+   --accent-s: 45%;
+   --accent-l-3: 58%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+   --text: #0b254a;
+}
+
+
+
+
+
+:root[data-theme='pink'],
+html.pink,
+body.pink {
+   --primary-h: 330;
+   --primary-s: 70%;
+   --primary-l-3: 80%;
+   --color-primary: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+   --color-primary-rgb: 248 187 217;
+   --color-on-primary: #000000;
+
+   --accent-h: 320;
+   --accent-s: 60%;
+   --accent-l-3: 55%;
+   --color-accent: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+
+   --card-background: rgba(var(--color-primary-rgb) / 0.06);
+   --text: #2a2a2a;
+}
+
+
+/* Reset inspirado en modern CSS reset */
+
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+
+
+body {
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+
+h1 {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  margin-bottom: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+h2 { font-size: var(--text-xl); }
+h3 { font-size: var(--text-lg); }
+
+/* Helpers */
+.text-center { text-align: center; }
+.text-muted { color: var(--color-text-secondary); }
+
+
+
+
+/**
+ * Main theme variables for Angular app
+ * Only keep variables used in CSS for branding, theme, and typography
+ */
+:root {
+      /* Colors */
+  --color-primary: #ffd54f;
+  --color-primary-hover: #ffca28;
+  --color-primary-contrast: #212121;
+  --color-secondary: #5c6bc0;
+  --color-text-primary: #212121;
+  --color-text-secondary: #616161;
+  --color-background: #fafafa;
+  --color-surface: #ffffff;
+  --color-border: #42a5f5;
+
+  /* Typography */
+  --font-base: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+
+
+
+
+
+    /* Primary Colors */
+    --color-primary: #cb9b3a;
+    // --color-secondary: #26c6da;
+    --color-tertiary: #ab47bc;
+
+    --color-success: #479438;
+    --color-warning: #D98200;
+    --color-danger: #B00000;
+
+    --color-light: #f6f8fc;
+    --color-medium: #5f5f5f;
+    --color-dark: #2f2f2f;
+
+    /* Custom App Colors */
+    --color-red: #ef5350;
+    --color-orange: #ff9800;
+    --color-yellow: #f9f079;
+    --color-lime: #b1d62e;
+    --color-green: #66bb6a;
+    --color-azure: #42a5f5;
+    --color-klein: #0032a0;
+    --color-magenta: #FD3DB5;
+    --color-neutral: #90a4ae;
+
+    --surface-0: hsl(229, 41%, 5%);
+    --surface-1: hsl(229, 25%, 12%);
+    --surface-2: hsl(234, 26%, 16%);
+
+    /* Backgrounds & UI */
+    --background-color: #ffffff;
+    --card-background: #fafaf7;
+    --card-background-rgb: 250, 250, 247;
+    --text-color: #000000;
+    --spin-background-btn: #c9b6c9;
+
+    /* Typography */
+    //--font-family: 'Inter', 'Arial', sans-serif;
+
+    /* Gradient Glow for effects */
+    --gradient-glow: var(--color-yellow), var(--color-lime), var(--color-azure), var(--color-tertiary), var(--color-primary);
+
+    /* Border and blend */
+    --border: thin solid hsl(229, 16%, 58%);
+    --blend: 10%;
+}
+
+/* Dark Theme Overrides */
+body.dark {
+    --color-primary: #c6dee2;
+    --color-secondary: #00acc1;
+    --color-tertiary: #ca6d09;
+
+    --color-success: #93d62e;
+    --color-warning: #ffa50a;
+    --color-danger: #FF5a36;
+
+    --color-light: #e1e1e1;
+    --color-medium: #9b9b9b;
+    --color-dark: #1c1c1c;
+
+    --card-background: #262628;
+    --text-color: #ffffff;
+    --spin-background-btn: #88899d;
+}
+
+/* Pink Theme */
+body.pink {
+    --color-primary: #f8bbd9;
+    --color-secondary: #f06292;
+    --color-tertiary: #ab47bc;
+    --color-success: #73e58e;
+    --color-warning: #f98d40;
+    --color-danger: #ec4040;
+
+    --card-background: var(--color-secondary);
+    --text-color: var(--color-magenta);
+    --spin-background-btn: #c9b6c2;
+}
+
+/* Blue Theme */
+body.blue {
+    --color-primary: #bbc2f8;
+    --color-secondary: #627cf0;
+    --color-tertiary: #7847bc;
+    --color-success: #797be9;
+    --color-warning: #dfffb6;
+    --color-danger: #404eec;
+
+    --background-color: var(--color-azure);
+    --card-background: var(--color-danger);
+    --text-color: var(--color-lime);
+    --spin-background-btn: #b6b9c9;
+}
+
+/* Green Theme */
+body.green {
+    --color-primary: #8fe979;
+    --color-secondary: #627cf0;
+    --color-tertiary: #7847bc;
+
+    --color-success: #1dd126;
+    --color-warning: #ec9e40;
+    --color-danger: #ec4040;
+
+    --background-color: var(--color-azure);
+    --card-background: var(--color-danger);
+    --text-color: var(--color-lime);
+    --spin-background-btn: #b6b9c9;
+}
+
+/* Smooth theme transitions */
+body,
+app-root,
+.theme-transition {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+/**
+ * Main theme variables for Angular app
+ * Only keep variables used in CSS for branding, theme, and typography
+ */
+
+:root {
+   --color-primary: rgb(255, 213, 77);
+   --color-primary-rgb: ;
+   --color-secondary: hsl(187, 71%, 50%);
+   --color-tertiary: hsl(291, 47%, 51%);
+
+   --color-success: hsl(88, 87%, 29%);
+   --color-warning: hsl(36, 100%, 43%);
+   --color-danger: hsl(0, 100%, 35%);
+
+   --color-light: hsl(220, 50%, 98%);
+   --color-medium: hsl(0, 0%, 37%);
+   --color-dark: hsl(0, 0%, 18%);
+
+   /* Surfaces & text */
+   --background: hsl(0, 0%, 100%);
+   --spin-background-btn: hsl(306, 21%, 81%);
+   --surface: hsl(0, 4%, 86%);
+   --surface-rgb: ;
+   --text: #0b0b0b;
+   --muted: #6b6b6b;
+   --border: hsl(210 10% 85%);
+
+   /* Typography */
+   --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+   --font-heading: 'Poppins', sans-serif;
+   --font-size-base: 16px;
+   --line-height-base: 1.45;
+
+   /* Spacing scale */
+   --space-1: 4px;
+   --space-2: 8px;
+   --space-3: 16px;
+   --space-4: 24px;
+
+   /* Radius / shadow / blend / z */
+   --radius-sm: 6px;
+   --radius-md: 8px;
+   --radius-lg: 12px;
+   --radius-round: 50%;
+   --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+   --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.12);
+   --blend: 10%;
+   --z-top: 1000;
+
+   /* Motion / focus */
+   --transition-fast: 180ms ease;
+   --focus-ring: 3px solid color-mix(in srgb, var(--color-primary) 40%, transparent);
+
+   /* Custom App Colors */
+   --color-red: #ef5350;
+   --color-orange: #ff9800;
+   --color-yellow: #f9f079;
+   --color-lime: #b1d62e;
+   --color-green: #66bb6a;
+   --color-azure: #42a5f5;
+   --color-klein: #0032a0;
+   --color-magenta: #FD3DB5;
+   --color-neutral: #90a4ae;
+
+   /* Gradient Glow for effects */
+   --gradient-glow: var(--color-yellow), var(--color-lime), var(--color-azure), var(--color-tertiary), var(--color-primary);
+}
+
+body.dark {
+   --color-primary: hsl(189, 33%, 83%);
+   --color-primary-rgb: ;
+
+   --background: hsl(230 15% 6%);
+   --spin-background-btn: hsl(233, 6%, 73%);
+   --surface: hsl(230 16% 12%);
+   --surface-rgb: ;
+   --text: #fff;
+   --muted: #a9b0bb;
+}
+
+@media (prefers-reduced-motion: reduce) {
+   :root { --transition-fast: 0ms; }
+}
+
+/* Smooth theme transitions */
+body,
+app-root,
+.theme-transition {
+   transition: background-color 0.4s ease, color 0.4s ease;
+}

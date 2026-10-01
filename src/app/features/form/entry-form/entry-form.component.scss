@@ -1,0 +1,106 @@
+// * { border: 1px solid violet;}
+.edit-form {
+    display: grid;
+    width: min(100% - 4rem, 1200px);
+    margin-top: 6rem;
+    margin-inline: auto;
+    padding: 2.4rem;
+    gap: 1rem;
+    background-color: var(--color-dark);
+    border-radius: 24px;
+
+    .full-width {
+        grid-column: 1 / -1;
+    }
+
+    a,
+    h2 {
+        color: hsl(from var(--color-tertiary) h s 80%);
+    }
+
+    p {
+        color: var(--color-light-shade);
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+    }
+
+    label {
+        display: grid;
+        gap: 0.5cap;
+        color: white;
+        text-transform: uppercase;
+        font-size: 1rem;
+
+        text-box-trim: trim-both;
+        text-box-edge: cap alphabetic;
+    }
+
+    input,
+    textarea,
+    select,
+    option {
+        padding: 1ex 2ex;
+        background: var(--surface-2);
+        color: var(--color-primary);
+        accent-color: var(--color-tertiary);
+        text-transform: capitalize;
+        border: var(--border);
+        border-radius: 16px;
+    }
+
+    button {
+        cursor: pointer;
+        background-color: var(--color-tertiary);
+        color: var(--color-primary);
+        padding: 0.8rem 1.4rem;
+        border: 0;
+        border-radius: 16px;
+
+        &:hover,
+        &:focus-visible {
+            background-color: hsl(from var(--color-tertiary) h s 30%);
+        }
+    }
+
+    .edit-form button {
+        justify-self: start;
+    }
+
+    .shape-separator {
+        display: flex;
+        padding: 1.2rem;
+        align-items: center;
+        text-align: center;
+
+        h2 {
+            padding: 0 1rem;
+        }
+    }
+
+    .shape-separator::after,
+    .shape-separator::before {
+        content: '';
+        flex-grow: 1;
+        border-top: 1px solid var(--color-primary);
+        margin-top: 0 25px;
+    }
+
+    section {
+        display: grid;
+        gap: 1rem;
+
+        @media (width > 720px) {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    .card {
+        width: 360px;
+        margin: 0.4rem auto;
+    }
+}

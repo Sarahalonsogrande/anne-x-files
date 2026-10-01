@@ -1,0 +1,30 @@
+<!--
+    Form Shell Component
+    --------------------------------------------------
+    Provides a flexible shell for forms with projected list and item content.
+    - Renders a generic card for the current item
+    - Emits submit and reset events
+    - Accessibility: semantic form, translated button labels (i18n, via ngx-translate).
+-->
+
+<form class="form-shell" (ngSubmit)="onSubmit.emit()" autocomplete="off">
+    <!-- Projected list content -->
+    <ng-content select="[list]"></ng-content>
+
+    <!-- Projected item content -->
+    <ng-content select="[item]"></ng-content>
+
+    <!-- Card preview for the current item (footer hidden) -->
+    <app-generic-card [item]="itemModel()" [cardFooter]="false" class="card" />
+
+    <!-- Navigation buttons: Save and Reset -->
+    <nav>
+        <button type="submit" (click)="onSubmit.emit()">
+            {{ 'buttons.save' | translate }}
+        </button>
+
+        <button type="button" (click)="onReset.emit()">
+            {{ 'buttons.reset' | translate }}
+        </button>
+    </nav>
+</form>

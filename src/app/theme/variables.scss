@@ -1,0 +1,293 @@
+/* Theme tokens (modes + moods). See docs/THEMING.md for full design and
+   usage guidance. Keep tokens semantic — components should read public tokens
+   only (e.g. --background, --color-primary). */
+
+:root {
+  /* PRIMARY (hue + saturation: overridden by moods) */
+  --primary-h: 0;
+  --primary-s: 0%;
+
+  /* Raw lightness scale (private helpers) */
+  --primary-l-1: 92%;
+  --primary-l-2: 82%;
+  --primary-l-3: 58%; /* Base */
+  --primary-l-4: 42%;
+  --primary-l-5: 26%;
+
+  /* Public primary tokens */
+  --color-primary-weakest: hsl(var(--primary-h) var(--primary-s) var(--primary-l-1));
+  --color-primary-weak: hsl(var(--primary-h) var(--primary-s) var(--primary-l-2));
+  --color-primary-base: hsl(var(--primary-h) var(--primary-s) var(--primary-l-3));
+  --color-primary-strong: hsl(var(--primary-h) var(--primary-s) var(--primary-l-4));
+  --color-primary-strongest: hsl(var(--primary-h) var(--primary-s) var(--primary-l-5));
+
+  /* Shorthands & RGB Helper for alpha usage (overridde by moods) */
+  --color-primary: var(--color-primary-base);
+
+  --primary-rgb: 0 0 0;
+  --color-primary-rgb: var(--primary-rgb);
+
+  /* ACCENT (hue + saturation can be overridden by moods) */
+  --accent-h: 0;
+  --accent-s: 0%;
+
+  /* Raw lightness scale (private helpers) */
+  --accent-l-1: 84%;
+  --accent-l-2: 78%;
+  --accent-l-3: 58%; /* Base */
+  --accent-l-4: 42%;
+  --accent-l-5: 28%;
+
+  /* Public accent tokens */
+  --color-accent-lighter: hsl(var(--accent-h) var(--accent-s) var(--accent-l-1));
+  --color-accent-light: hsl(var(--accent-h) var(--accent-s) var(--accent-l-2));
+  --color-accent-base: hsl(var(--accent-h) var(--accent-s) var(--accent-l-3));
+  --color-accent-dark: hsl(var(--accent-h) var(--accent-s) var(--accent-l-4));
+  --color-accent-darker: hsl(var(--accent-h) var(--accent-s) var(--accent-l-5));
+
+  /* Shorthand & RGB Helper for alpha usage (overridde by moods) */
+  --color-accent: var(--color-accent-base);
+
+  --accent-rgb: 0 0 0;
+  --color-accent-rgb: var(--accent-rgb);
+
+  /* SEMANTIC TOKENS (components should use these) */
+  --background: #ffffff;
+  --surface: #fafafa;
+  --surface-raised: #ffffff;
+  --surface-overlay: #ffffff;
+
+  --text: #0b0b0b;
+  --muted: #6b6b6b;
+
+  --card-background: var(--surface);
+  --card-background-accented: rgba(var(--color-primary-rgb) / var(--alpha-medium));
+
+  --button-bg: var(--color-primary);
+  --button-text: var(--color-on-primary);
+
+  
+
+  /* ON-COLORS (absolute foreground colors) */
+  --on-light: #0b0b0b;
+  --on-dark: #ffffff;
+
+  --color-on-primary: var(--on-dark);
+  --color-on-accent: var(--on-light);
+  --color-on-surface: var(--on-light);
+
+  --color-on-success: var(--on-dark);
+  --color-on-warning: var(--on-light);
+  --color-on-danger: var(--on-dark);
+
+  /* FEEDBACK COLORS */
+  /* SUCCESS ≈ #479438 */
+  --success-h: 110;
+  --success-s: 45%;
+  --success-l: 40%;
+
+  /* Public accent tokens */
+  --color-success: hsl(var(--success-h) var(--success-s) var(--success-l));
+  --color-success-dark: hsl(var(--success-h) var(--success-s) 30%);
+
+  /* RGB Helper for alpha usage */
+  --color-success-rgb: 71 148 56;
+
+  /* WARNING ≈ #f2930d */
+  --warning-h: 35;
+  --warning-s: 90%;
+  --warning-l: 50%;
+
+  /* Public accent tokens */
+  --color-warning: hsl(var(--warning-h) var(--warning-s) var(--warning-l));
+  --color-warning-dark: hsl(var(--warning-h) var(--warning-s) 40%);
+
+  /* RGB helper for alpha usage */
+  --color-warning-rgb: 242 147 13;
+
+  /* DANGER ≈ #c91d1d */
+  --danger-h: 0;
+  --danger-s: 75%;
+  --danger-l: 45%;
+
+  /* Public accent tokens */
+  --color-danger: hsl(var(--danger-h) var(--danger-s) var(--danger-l));
+  --color-danger-dark: hsl(var(--danger-h) var(--danger-s) 35%);
+
+  /* RGB helper for alpha usage */
+  --color-danger-rgb: 201 29 29;
+
+  /* UTILITY COLORS (Avoid in core UI components) */
+  --color-red: hsl(1 83% 63%);
+  --color-orange: hsl(36 100% 50%);
+  --color-yellow: hsl(56 91% 73%);
+  --color-lime: hsl(73 67% 51%);
+  --color-green: hsl(123 38% 57%);
+  --color-azure: hsl(207 90% 61%);
+  --color-klein: hsl(221 94% 37%);
+  --color-magenta: hsl(323 98% 62%);
+  --color-neutral: hsl(200 16% 62%);
+
+  /* TYPOGRAPHY */
+  --font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-size-base: 16px;
+  --line-height-base: 1.45;
+
+  /* BUTTONS */
+  --btn-fab-diameter: clamp(1.6rem, 4vw, 2.6rem);
+  --icon-fab-diameter: clamp(1rem, 2.5vw, 1.8rem);
+
+
+  /* SPACINGS */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+
+  /* BORDERS */
+  --border-subtle: hsl(210 10% 88%);
+  --border-strong: hsl(210 10% 75%);
+
+  /* RADIUS / SHADOWS / LAYERING */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 64px;
+  --radius-round: 50%;
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.12);
+
+  /* Z-INDEX */
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-modal: 1000;
+
+  /* MOTION / TRANSITIONS */
+  --motion-factor: 1.2;
+
+  --transition-fast: calc(180ms * var(--motion-factor)) ease;
+  --transition-smooth: calc(400ms * var(--motion-factor)) ease;
+
+  /* OPACITY / ALPHA */
+  --alpha-strong: 0.32;
+  --alpha-medium: 0.2;
+  --alpha-subtle: 0.12;
+}
+
+/*
+ * MODES (luminosity)
+   * - Attribute selectors `:root[data-mode="..."]` for token overrides.
+   * - Class selectors: for compatibility with legacy rules.
+ */
+
+/* DARK MODE overrides */
+:root[data-mode='dark'],
+html.dark,
+body.dark {
+  /* Raw lightness scale (private) */
+  --primary-l-1: 96%;
+  --primary-l-2: 88%;
+  --primary-l-3: 78%;
+  /* Base */
+  --primary-l-4: 62%;
+  --primary-l-5: 44%;
+
+  /* SEMANTIC TOKENS */
+  --background: #0b0b0b;
+  --surface: #111214;
+  --surface-raised: #16181c;
+  --surface-overlay: #1c1f24;
+
+  --text: #ffffff;
+  --muted: #a9b0bb;
+
+  /*
+ * ON-COLORS for dark-mode:
+   * Both vars are inverted to preserve semantic contrast.
+ */
+  --on-light: #ffffff;
+  --on-dark: #0b0b0b;
+}
+
+/*
+ * MOODS (color identity)
+   * - Define the emotional / brand color direction.
+   * - Only change hue/saturation, do not change luminosity.
+   * - RGB helpers.
+ */
+
+/* HONEY mood (default) */
+:root[data-mood='honey'] {
+  /* PRIMARY ≈ #ffca28 */
+  --primary-h: 45;
+  --primary-s: 100%;
+
+  /* ACCENT ≈ #df6e49 */
+  --accent-h: 16;
+  --accent-s: 70%;
+
+  /* RGB helpers used by Alpha helpers */
+  --primary-rgb: 255 202 40;
+  --accent-rgb: 223 110 73;
+
+  //--color-on-primary: var(--on-light);
+}
+
+/* FLOWERY mood */
+:root[data-mood='flowery'] {
+  /* PRIMARY ≈ #af44ca */
+  --primary-h: 288;
+  --primary-s: 56%;
+
+  /* ACCENT ≈ #ff7eb9 */
+  --accent-h: 330;
+  --accent-s: 100%;
+
+  /* RGB helpers used by Alpha helpers */
+  --primary-rgb: 175 68 202;
+  --accent-rgb: 255 126 185;
+}
+
+/* LEAFY mood */
+:root[data-mood='leafy'] {
+  /* PRIMARY ≈ #23613b */
+  --primary-h: 146;
+  --primary-s: 45%;
+
+  /* ACCENT ≈ #a8ffb4 */
+  --accent-h: 140;
+  --accent-s: 100%;
+
+  /* RGB helpers used by Alpha helpers */
+  --primary-rgb: 35 97 59;
+  --accent-rgb: 168 255 180;
+}
+
+/* BIRTHDAY mood */
+:root[data-mood='birthday'] {
+  /* PRIMARY ≈ #d0388d */
+  --primary-h: 320;
+  --primary-s: 65%;
+
+  /* ACCENT ≈ #ffe156 */
+  --accent-h: 50;
+  --accent-s: 100%;
+
+  /* RGB helpers used by Alpha helpers */
+  --primary-rgb: 208 56 141;
+  --accent-rgb: 255 225 86;
+}
+
+/* OCEAN mood */
+:root[data-mood='ocean'] {
+  /* PRIMARY ≈ #0066ff */
+  --primary-h: 221;
+  --primary-s: 100%;
+
+  /* ACCENT ≈ #7fdbff */
+  --accent-h: 195;
+  --accent-s: 100%;
+
+  /* RGB helpers used by Alpha helpers */
+  --primary-rgb: 0 102 255;
+  --accent-rgb: 127 219 255;
+}

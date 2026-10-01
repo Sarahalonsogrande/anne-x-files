@@ -1,0 +1,170 @@
+// * {
+//     border: 1px solid black;
+// }
+
+main {
+    height: 100vh;
+    margin: 6rem 2rem;
+    // display: grid;
+    // place-items: center;
+
+    div.background {
+        width: 100%;
+        padding: var(--space-4);
+        background: var(--background);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+
+        div.surface {
+            width: 80%;
+            background: var(--card-background);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+
+            p.text {
+                color: var(--text);
+
+            }
+
+            p.muted {
+                color: var(--muted);
+
+            }
+        }
+    }
+
+    // div::first-child {
+
+    // }
+
+
+    ul.carousel {
+        display: flex;
+        width: 75%;
+        margin: 3em auto;
+        list-style: none;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        anchor-name: --carousel;
+        scroll-marker-group: after;
+
+        &::scroll-marker-group {
+            display: flex;
+            justify-content: center;
+            gap: .5em;
+        }
+
+        li.slide {
+            display: grid;
+            place-items: center;
+            padding: 1em;
+            margin: 1em;
+            flex: 0 0 20em;
+            aspect-ratio: 5 / 3;
+            background: var(--color-primary);
+            border-radius: .5em;
+            //box-shadow: 3px 3px 4px 2px rgba(0, 0, 0, 0.2);
+            scroll-snap-align: start;
+
+            &::scroll-marker {
+                content: '';
+                height: 0.6em;
+                aspect-ratio: 1;
+                background: var(--color-neutral);
+                border: var(--border);
+                border-radius: 3px;
+                box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+            }
+
+            &::scroll-marker:target-current {
+                background: var(--color-primary);
+            }
+
+            @media(max-width: 500px) {
+                flex: 0 0 100%;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &::scroll-button(right),
+        &::scroll-button(left) {
+            --bg-transition: 0.24s;
+            --transform-transition: 0.15s;
+
+            content: '👉🏽';
+            width: clamp(1.6rem, 4vw, 2.6rem);
+            aspect-ratio: 1;
+                display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: .1em;
+        font-size: 0.94rem;
+        background: var(--background-color);
+        transition: background-color var(--bg-transition) ease,
+            transform var(--transform-transition) ease;
+                border: thin solid var(--spin-background-btn);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: fixed;
+            position-anchor: --carousel;
+            position-area: right center;
+            translate: -50%;
+            transform: scale(0.92);
+
+            // border: var(--border);
+            // background: var(--color-primary);
+            // font-family: Consolas;
+            // font-size: 1.8rem;
+            // width: 2.6rem;
+            // aspect-ratio: 1;
+            // border-radius: 50%;
+            // cursor: pointer;
+            // position: fixed;
+            // position-anchor: --carousel;
+            // position-area: right center;
+            // translate: -50%;
+        }
+
+        &::scroll-button(left) {
+            content: '👈🏽';
+            position-area: left center;
+            translate: 50%;
+        }
+
+        &::scroll-button(right):disabled,
+        &::scroll-button(left):disabled {
+            opacity: 0;
+            cursor: auto;
+        }
+
+                &::scroll-button(right):active,
+        &::scroll-button(left):active {
+            transform: scale(0.82);
+        }
+    }
+
+
+    // .shape {
+    //     width: 50px;
+    //     height: 50px;
+    //     background: yellowgreen;
+    //     clip-path: shape(
+    //         from 50% 0%,
+    //         line to 61% 35%,
+    //         line to 98% 35%,
+    //         line to 68% 57%,
+    //         line to 79% 91%,
+    //         line to 50% 70%,
+    //         line to 21% 91%,
+    //         line to 32% 57%,
+    //         line to 2% 35%,
+    //         line to 39% 35%,
+    //         close
+    //     );
+    // }
+}

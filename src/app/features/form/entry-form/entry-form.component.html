@@ -1,0 +1,82 @@
+<form class="edit-form" (ngSubmit)="onSubmit()" autocomplete="off">
+
+    <section>
+        <header class="shape-separator full-width"><h2>CHOOSE</h2></header>
+
+        <label> Choose a list:
+            <select
+
+                (change)="onListChange($event.target)"
+            >
+                <option value="">Select list</option>
+                @for(list of lists; track list.id) {
+                    <option [value]="list.id">{{ list.title }}</option>
+                }
+            </select>
+        </label>
+
+        <label> Choose a item:
+            <select
+                [disabled]="items().length === 0"
+                (change)="onItemChange($event)"
+            >
+                <option value="">Select item</option>
+                    @for(item of items(); track item.id) {
+                        <option [value]="item.id">{{ item.title }}</option>
+                    }
+            </select>
+        </label>
+    </section>
+
+    <aside class="card">
+        <span>{{ selectedListId() }}</span>
+        <app-generic-card
+            [item]="selectedItem()"
+            [cardFooter]="false"
+        />
+    </aside>
+
+    <section>
+        <header class="shape-separator full-width"><h2>MODIFY</h2></header>
+
+        <!-- @if(!selectedItem(); as item) {
+
+            <label class="full-width"> New list name:
+                <input type="text" placeholder="Your new list" />
+            </label>
+        } -->
+
+        <label> Item title:
+            <input type="text" placeholder="Your title" [field]="itemForm.title" />
+        </label>
+
+        <label> Subtitle:
+            <input type="text" placeholder="Your subtitle" [field]="itemForm.subtitle" />
+        </label>
+
+        <label> Level:
+                <app-level-picker [field]="itemForm.level" />
+        </label>
+
+        <label> Image:
+            <input type="text" placeholder="Your image" [field]="itemForm.image" />
+        </label>
+
+        <label class="full-width"> Description:
+            <textarea placeholder="Your description" [field]="itemForm.description" rows="4"></textarea>
+        </label>
+
+        <button
+            type="submit"
+            [disabled]="!selectedListId()"
+        >
+            {{ isEditMode() ? 'Update item' : 'Create item' }}
+        </button>
+        <button
+            type="button"
+            (click)="resetForm()"
+        > RESET
+        </button>
+
+    </section>
+</form>

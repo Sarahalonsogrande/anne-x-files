@@ -1,0 +1,74 @@
+/*
+    Spin Button Styles
+    --------------------------------------------------
+    - Styles for a reusable floating action / FAB-like button
+    - Includes sizing, alignment, visual feedback, and direction-aware spin animations
+*/
+
+@use '../../../shared/styles/button-styles' as buttons;
+
+// Main button styles: size, shape, background, and shadow
+.spin-btn {
+    @include buttons.fab-button-base;
+    @include buttons.spin-button-styles;
+    aspect-ratio: 1;
+}
+
+/* Direction-aware spin animations */
+.spin-btn.rotating.rotate-next .icon {
+    animation: spin-next var(--spin-duration) var(--spin-easing) forwards;
+}
+
+.spin-btn.rotating.rotate-prev .icon {
+    animation: spin-prev var(--spin-duration) var(--spin-easing) forwards;
+}
+
+/* Keyframes for spin animation */
+@keyframes spin-next {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    70% {
+        transform: rotate(390deg);
+    }
+
+    85% {
+        transform: rotate(350deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-prev {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    70% {
+        transform: rotate(-390deg);
+    }
+
+    85% {
+        transform: rotate(-350deg);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+/* Utility: visually-hidden (accessible text only) */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}

@@ -1,0 +1,28 @@
+<!-- Global header template
+  - Renders translated title, switchers for mode/mood/language, and navigation.
+  - Header uses aria-labelledby for accessibility. -->
+
+<header role="banner" aria-labelledby="global-header-title" class="global-header">
+  <!-- Home button & Language (left/start slot) -->
+
+  <nav class="switcher-btns">
+    <button
+    type="button"
+    routerLink="/welcome"
+    [attr.aria-label]="'nav.home' | translate"
+    class="home-btn"
+  >
+    <img src="/images/home.svg" alt="">
+  </button>
+
+    <app-language-switcher />
+  </nav>
+
+  <!-- Header title (Translated, custom font) -->
+  <h1 class="header-title" id="global-header-title">
+    {{ headerTitle() | translate }}
+  </h1>
+
+  <!-- Theming manager component: Mode & Mood switcher (right/end slot) -->
+  <app-theme-manager />
+</header>

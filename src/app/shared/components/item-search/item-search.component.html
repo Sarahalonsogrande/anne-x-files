@@ -1,0 +1,15 @@
+<!-- <select [value]="selectedListId()" (change)="onListChange($event)">
+  <option value="">Selecciona una lista</option>
+  @for (list of lists; track list.id) {
+    <option [value]="list.id">{{ list.title }}</option>
+  }
+</select>
+<select [disabled]="items().length === 0" (change)="onItemChange($event)">
+  <option value="">Selecciona un item</option>
+  @for (item of items(); track item.id) {
+    <option [value]="item.id">{{ item.title }}</option>
+  }
+</select> -->
+
+<input type="search" placeholder="Buscar..." [value]="searchTerm()" (input)="onInput($event)"
+  class="item-search-input" />

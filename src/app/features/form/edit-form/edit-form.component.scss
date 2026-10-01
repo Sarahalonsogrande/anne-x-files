@@ -1,0 +1,24 @@
+section {
+    display: grid;
+    gap: 1rem;
+    @media (width > 720px) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--color-tertiary);
+    color: var(--color-primary);
+    padding: 0.8rem 1.4rem;
+    border: 0;
+    border-radius: 16px;
+    &:hover,
+    &:focus-visible {
+        background-color: hsl(from var(--color-tertiary) h s 30%);
+    }
+}

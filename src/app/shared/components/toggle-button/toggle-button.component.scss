@@ -1,0 +1,59 @@
+.toggle {
+    background: var(--color-primary);
+    height: var(--btn-fab-diameter);
+    aspect-ratio: 2 / 1;
+    padding: clamp(2px, 0.5vw, 6px);
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow: hidden;
+    /* Prevents label from overflowing and overlapping adjacent elements */
+    margin-inline-end: clamp(6px, 1.5vw, 12px);
+
+    .icon {
+        position: absolute;
+        width: var(--icon-fab-diameter);
+        aspect-ratio: 1;
+        z-index: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        pointer-events: none;
+    }
+
+    .icon-off {
+        left: clamp(6px, 1.2vw, 10px);
+    }
+
+    .icon-on {
+        right: clamp(6px, 1.2vw, 10px);
+    }
+
+    input {
+        display: none;
+    }
+
+    label {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: clamp(2px, 1.2vw, 6px);
+        transform: translateY(-50%) translateX(0);
+        width: calc(var(--icon-fab-diameter) * 1.2);
+        aspect-ratio: 1;
+        background: #ccc;
+        display: flex;
+        z-index: 2;
+
+        cursor: pointer;
+        border-radius: 50vw;
+        transition:
+            left 0.25s ease,
+            background 0.25s ease;
+    }
+
+    input:checked + label {
+        left: calc(100% - var(--icon-fab-diameter) - clamp(6px, 1.2vw, 10px));
+        background: #47c;
+    }
+}

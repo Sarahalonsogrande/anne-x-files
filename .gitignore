@@ -41,3 +41,8 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment secrets
+src/environments/secrets.ts
+
+# Ignore this files

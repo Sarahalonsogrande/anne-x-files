@@ -1,0 +1,57 @@
+/*
+    Global header styles
+    --------------------------------------------------
+    - Styles for header, title and switcher controls *
+    - Includes sizing, alignment, custom font title.
+    */
+
+.global-header {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding: 1.4vh;
+    top: 0;
+    left: 0;
+    background: var(--card-background);
+    z-index: 100;
+
+    .header-title {
+        font-family: 'Hanged Letters';
+        font-size: clamp(2.8rem, 5vw, 8rem);
+        font-weight: 300;
+        line-height: 1;
+        letter-spacing: 0.24rem;
+        color: var(--color-primary);
+        pointer-events: none;
+
+        // position: absolute;
+        // left: 50%;
+        // top: 50%;
+        // transform: translate(-50%, -50%);
+        // width: max-content;
+        // text-align: center;
+        // color: var(--color-primary);
+    }
+
+    .switcher-btns {
+        display: flex;
+        gap: var(--space-2);
+
+        button {
+            width: var(--btn-fab-diameter);
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-background-accented);
+            transition: background-color var(--bg-transition) ease,
+            transform var(--transform-transition) ease;
+            border: thin solid var(--color-primary);
+            border-radius: var(--radius-round);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+    }
+}

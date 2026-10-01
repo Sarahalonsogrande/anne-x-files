@@ -1,0 +1,17 @@
+<div class="toggle">
+    @if (option1(); as opt1) {
+        <img [src]="opt1.img" alt="" class="icon icon-off" aria-hidden="true" />
+    }
+    @if (option2(); as opt2) {
+        <img [src]="opt2.img" alt="" class="icon icon-on" aria-hidden="true" />
+    }
+
+    <input
+        type="checkbox"
+        id="toggle-btn"
+        [checked]="isChecked()"
+        (change)="onToggle($event)"
+        [attr.aria-label]="ariaLabel()"
+    />
+    <label for="toggle-btn"></label>
+</div>

@@ -1,0 +1,63 @@
+/**
+ * Font Face Declarations
+ * --------------------------------------------------
+ * Custom font families for the app UI.
+ * - All font files are stored in /assets/fonts/...
+ * - Use only the weights/styles actually needed for performance.
+ * - font-display: swap ensures text is visible while fonts load.
+ *
+ * Usage:
+ *   font-family: 'Quicksand', 'Saira', 'Momo', sans-serif;
+ *   Set --ion-font-family in :root for global usage.
+ */
+
+/* Inter: Modern, highly readable UI font (main app font) */
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/quicksand/Quicksand-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/quicksand/Quicksand-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/quicksand/Quicksand-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/quicksand/Quicksand-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Hanged Letters: Custom display font for branding or special UI elements */
+@font-face {
+    font-family: 'Hanged Letters';
+    src: url('/fonts/hanged-letters/Hanged Letters.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Chasing Cars: Custom display font for branding or special UI elements */
+@font-face {
+    font-family: 'Chasing Cars';
+    src: url('/fonts/chasing-cars/Chasing Cars.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

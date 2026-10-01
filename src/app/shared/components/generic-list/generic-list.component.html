@@ -1,0 +1,30 @@
+<!--
+  Generic List Component
+  --------------------------------------------------
+  Renders a list of items as cards with a header separator.
+  - Uses @for for efficient rendering and tracking
+  - Shows skeleton cards as placeholders while loading
+  - Accessibility: semantic HTML, translated titles (i18n, via ngx-translate).
+-->
+<main>
+  <!-- Header separator with translated list title -->
+  <app-header-separator title="{{ listTitle() | translate }}" />
+
+  <!-- Card container for item cards -->
+  <section class="cards-container">
+      <!-- Render each item as a card; show skeleton while loading -->
+      @for (item of list()?.items ?? []; track $index; let i = $index) {
+        @defer () {
+          <app-generic-card
+            [item]="item"
+            [cardIndex]="$index + 1"
+            [isFavorite]="isFavorite(item)"
+            (onFav)="handleFav(item)"
+            (onEdit)="editItem(item)"
+          />
+        } @placeholder (minimum 2s) {
+            <app-generic-card [skeleton]="true" />
+        }
+      }
+  </section>
+</main>

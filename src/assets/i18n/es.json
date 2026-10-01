@@ -1,0 +1,73 @@
+{
+    "buttons": {
+        "save": "guardar",
+        "edit": "editar",
+        "add": "añadir",
+        "next": "siguiente",
+        "back": "atrás",
+        "start": "empezar",
+        "finish": "finalizar",
+        "skip": "saltar",
+        "reset": "limpiar"
+    },
+    "aria": {
+        "next": "Ir al siguiente paso",
+        "back": "Volver al paso anterior",
+        "start": "Comenzar el proceso",
+        "finish": "Finalizar y continuar",
+        "skip": "Saltar este paso",
+        "close": "Cerrar diálogo",
+        "openMenu": "Abrir menú",
+        "submit": "Enviar formulario",
+        "cancel": "Cancelar y volver",
+        "selectLanguage": "Seleccionar idioma",
+        "toggleTheme": "Cambiar tema claro/oscuro"
+    },
+    "language": {
+        "english": "Inglés",
+        "spanish": "Español",
+        "german": "Alemán"
+    },
+    "listTitles": {
+        "phobias": {
+            "title": "Fobias"
+        },
+        "kittycats": {
+            "title": "Gatetes"
+        }
+    },
+    "appTitles": {
+        "appTitle": "Anne X Files",
+        "welcomeTitle": "Bienvenide",
+        "listTitle": "Lista",
+        "createTitle": "Crear",
+        "editTitle": "Editar",
+        "itemTitle": "Elemento"
+    },
+    "item": {
+        "title": "titulo",
+        "subtitle": "subtitulo",
+        "level": "nivel",
+        "image": "imagen",
+        "description": "descripción",
+        "levels": {
+            "high": "alto",
+            "medium": "medio",
+            "low": "bajo",
+            "funny": "gracioso",
+            "unknown": "desconocido"
+        },
+        "fallbacks": {
+            "title": "Título",
+            "subtitle": "Subtítulo",
+            "description": "Descripción"
+        }
+    },
+    "form": {
+        "choose": "Elige una lista",
+        "create": "O  crea una nueva",
+        "newList": "Nueva lista"
+    }
+}
+
+

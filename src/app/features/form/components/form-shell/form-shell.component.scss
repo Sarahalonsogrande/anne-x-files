@@ -1,0 +1,40 @@
+// Professional form shell styles for reusable Angular forms
+.form-shell {
+    display: grid;
+    width: min(100% - 4rem, 1200px);
+    margin-top: 6rem;
+    margin-inline: auto;
+    padding: 2.4rem;
+    gap: 1rem;
+    background-color: var(--color-dark);
+    border-radius: 24px;
+
+    .card {
+        width: 360px;
+        margin: 0.4rem auto;
+    }
+
+    nav {
+        display: grid;
+        gap: 1rem;
+
+        @media (width > 720px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: var(--color-tertiary);
+            color: var(--color-primary);
+            padding: 0.8rem 1.4rem;
+            border: 0;
+            border-radius: 16px;
+
+            &:hover,
+            &:focus-visible {
+                background-color: hsl(from var(--color-tertiary) h s 30%);
+            }
+        }
+    }
+
+}

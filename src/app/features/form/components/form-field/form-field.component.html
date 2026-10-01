@@ -1,0 +1,27 @@
+<!--
+    Form Field Component
+    --------------------------------------------------
+    Provides a flexible field wrapper with optional label and projected content.
+    - Supports full-width styling
+    - Error handling block is ready for future use
+-->
+
+<div class="form-field" [class.full-width]="fullWidth">
+    <!-- Optional label -->
+    @if (label) {
+        <label class="form-label">
+            {{ label }}
+        </label>
+    }
+
+    <!-- Projected form control/content -->
+    <ng-content></ng-content>
+
+    <!-- Error message block (to be enabled in the future) -->
+    <!-- @if (field?.errors()?.length) {
+    <small class="error">
+        {{ field.errors()[0].message }}
+    </small>
+    } -->
+
+</div>

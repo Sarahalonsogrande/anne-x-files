@@ -1,0 +1,38 @@
+<!--
+    Form Item Component
+    --------------------------------------------------
+    Renders a form for editing or creating an item.
+    - Uses reusable form-field and level-picker components
+    - All labels and placeholders are translated (i18n, via ngx-translate).
+    - Ready for future validation/error handling
+-->
+
+<section>
+    <!-- Header separator with translated title -->
+    <app-header-separator title="{{ 'appTitles.editTitle' | translate }}" [class.full-width]="true" />
+
+    <!-- Title field -->
+    <app-form-field label="{{ 'item.title' | translate }}">
+        <input type="text" [field]="itemForm.title" />
+    </app-form-field>
+
+    <!-- Subtitle field -->
+    <app-form-field label="{{ 'item.subtitle' | translate }}">
+        <input type="text" [field]="itemForm.subtitle" />
+    </app-form-field>
+
+    <!-- Level picker field -->
+    <app-form-field label="{{ 'item.level' | translate }}">
+        <app-level-picker [field]="itemForm.level" />
+    </app-form-field>
+
+    <!-- Image URL field -->
+    <app-form-field label="{{ 'item.image' | translate }}">
+        <input type="file" [field]="itemForm.image" />
+    </app-form-field>
+
+    <!-- Description field (full width) -->
+    <app-form-field label="{{ 'item.description' | translate }}" [class.full-width]="true">
+        <textarea placeholder="{{ 'item.description' | translate }}" [field]="itemForm.description" rows="3"></textarea>
+    </app-form-field>
+</section>

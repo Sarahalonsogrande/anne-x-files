@@ -1,0 +1,66 @@
+<main>
+
+  <button routerLink="/carousel">
+    {{ 'buttons.edit' | translate }}
+  </button>
+
+  <!-- CAROUSEL -->
+    <ul class="carousel">
+      @for (list of filteredLists(); track list.id; let i = $index) {
+        <li class="slide" [id]="'slide-' + i">
+          <button [routerLink]="['/generic-list', list.id]">
+            {{ list.title | translate }}
+          </button>
+        </li>
+      }
+    </ul>
+
+<div class="wraper">
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+</div>
+<div class="wraper action-tokens">
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <!-- <div>O</div>
+    <div>O</div>
+    <div>O</div> -->
+</div>
+
+<div class="wraper custom-colors">
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+    <div>O</div>
+</div>
+
+<div class="background">
+  <div class="surface">
+    <p class="text">Text</p>
+    <p class="muted">Text Muted</p>
+  </div>
+</div>
+
+
+  <app-spin-button
+    route="/create-form"
+  />
+
+</main>

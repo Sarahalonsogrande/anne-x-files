@@ -1,0 +1,70 @@
+<!-- <pre>
+itemModel:
+{{ itemModel() | json }}
+</pre> -->
+
+<app-form-shell
+  [itemModel]="itemModel"
+  (onSubmit)="onSubmit()"
+  (onReset)="resetForm()">
+
+  <section list>
+
+    <app-form-field label="Choose a list:">
+      <select
+        [value]="selectedListId()"
+        (change)="onListChange($event.target)"
+      >
+        <option value="">Select list</option>
+          @for(list of lists; track list.id) {
+            <option [value]="list.id">{{ list.title }}</option>
+          }
+      </select>
+    </app-form-field>
+
+    <app-form-field label="Choose a item:">
+      <select
+          [disabled]="items().length === 0"
+          (change)="onItemChange($event.target)"
+      >
+          <option value="">Select item</option>
+              @for(item of items(); track item.id) {
+                  <option [value]="item.id">{{ item.title }}</option>
+              }
+      </select>
+    </app-form-field>
+
+  </section>
+
+  <section item>
+
+    <app-header-separator title="ITEM" [class.full-width]="true" />
+
+    <app-form-field label="Item title">
+      <input type="text" [field]="itemForm.title" />
+    </app-form-field>
+
+    <app-form-field label="Subitle">
+      <input type="text" [field]="itemForm.subtitle" />
+    </app-form-field>
+
+    <app-form-field label="Level">
+      <app-level-picker [field]="itemForm.level" />
+    </app-form-field>
+
+    <app-form-field label="Image">
+      <input type="text" [field]="itemForm.image" />
+    </app-form-field>
+
+    <app-form-field label="Description" [class.full-width]="true">
+      <textarea placeholder="Your description" [field]="itemForm.description" rows="3"></textarea>
+    </app-form-field>
+
+    <!-- <app-form-item
+      [itemForm]="itemForm"
+      [class.full-width]="true"
+    ></app-form-item> -->
+
+  </section>
+
+</app-form-shell>

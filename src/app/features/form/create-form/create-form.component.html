@@ -1,0 +1,46 @@
+<!--
+  Create Form Component
+  --------------------------------------------------
+  Renders a form for creating a new item and/or list.
+  - Uses form-shell, form-field, and form-item components
+  - All labels and placeholders are translated (i18n, via ngx-translate).
+  - Handles list selection, creation, and item editing
+-->
+
+<app-form-shell [itemModel]="itemModel" (onSubmit)="onSubmit()" (onReset)="resetForm()">
+  <!-- List section: select or create a list -->
+  <section list>
+    <!-- Header separator with dynamic or translated title -->
+    <app-header-separator title="{{ newListTitle() || selectedListTitle() || 'appTitles.listTitle' | translate }}"
+      [class.full-width]="true" />
+
+    <!-- List selection field -->
+    <app-form-field label="{{ 'form.choose' | translate }}">
+      <select [value]="selectedListId()" (change)="onListChange($event.target)">
+        <option value="">{{ 'form.newList' | translate }}</option>
+        @for(list of lists(); track list.id) {
+        <option [value]="list.id">{{ list.title | translate }}</option>
+        }
+      </select>
+    </app-form-field>
+
+    <!-- New list title input -->
+    <app-form-field label="{{ 'form.create' | translate }}">
+      <input [value]="newListTitle()" (input)="onNewListTitleInput($event)" type="text" [disabled]="!!selectedListId()"
+        placeholder="{{ 'form.newList' | translate }}" />
+    </app-form-field>
+
+    <!-- Add new list button -->
+    <app-form-field [class.full-width]="true">
+      <button type="button" [disabled]="!!selectedListId() || !newListTitle()" (click)="addNewList()">{{ 'buttons.add' |
+        translate }}</button>
+    </app-form-field>
+
+  </section>
+
+  <!-- Item section: item form fields -->
+  <section item>
+    <app-form-item [itemForm]="itemForm" [class.full-width]="true" />
+  </section>
+
+</app-form-shell>

@@ -1,0 +1,101 @@
+<!--
+  Generic Card Component
+  --------------------------------------------------
+  Flexible, reusable card for displaying item details.
+  - Shows skeleton loader if data is loading
+  - Displays item level, image, title, description
+  - Fully translated (i18n, via ngx-translate).
+  - Optional cardFooter for extra actions/stats
+  - Accessibility: alt text for images, semantic HTML
+-->
+
+<!--
+  Use @let data = item(); at the top of the template to cache the signal value.
+  This avoids multiple calls to item() and improves both performance and readability.
+-->
+@let data = item();
+
+<article
+  class="generic-card"
+  [style.border]="'8px solid ' + getLevelColor(data?.level)"
+  [class.loaded]="!skeleton()"
+>
+  <!-- Skeleton loader shown while item data is loading -->
+  @if(skeleton()) {
+    <!-- Level -->
+    <aside class="card-level-button skeleton skeleton-pill"></aside>
+
+    <!-- Media -->
+    <figure class="card-media">
+      <div class="skeleton skeleton-avatar"></div>
+    </figure>
+
+    <!-- Body -->
+    <section class="card-body">
+      <header class="card-header">
+        <div class="skeleton skeleton-title"></div>
+      </header>
+
+      <div class="card-description">
+        <div class="skeleton skeleton-line"></div>
+      </div>
+
+      <footer class="card-footer">
+        <div class="skeleton skeleton-pill"></div>
+
+        <div class="card-stats">
+          <div class="skeleton skeleton-pill"></div>
+          <div class="skeleton skeleton-pill"></div>
+        </div>
+      </footer>
+    </section>
+  } @else {
+  <!-- Item level indicator -->
+  <aside class="card-level-button card-stat card-stats" [style.background]="getLevelColor(data?.level)"
+    aria-label="Item Level">
+    <span>💀</span>
+    <span class="card-stats-value">
+      {{ 'item.levels.' + (data?.level || 'levels.unknown') | translate }}
+    </span>
+  </aside>
+
+  <!-- Item image/avatar -->
+  <figure class="card-media">
+    <img class="card-avatar" [src]="data?.image || '/images/annebunny.jpeg'"
+      [alt]="data?.title || ('item.fallbacks.title' | translate)" [alt]="data?.title" loading="lazy" decoding="async" />
+  </figure>
+
+  <section class="card-body">
+    <!-- Item title -->
+    <header class="card-header">
+      <h3 class="card-title">{{ data?.title || 'item.fallbacks.title' | translate }}</h3>
+    </header>
+
+    <!-- Item description -->
+    <p class="card-description">
+      {{ data?.description || 'item.fallbacks.description' | translate }}
+    </p>
+
+    <!-- Optional card footer with actions/stats -->
+    @if(cardFooter()) {
+    <footer class="card-footer">
+      <div class="card-stat">
+        <span class="card-stats-value">{{ '# ' + cardIndex() }}</span>
+      </div>
+
+      <div class="card-stats">
+        <button class="card-btn" (click)="onFav.emit()" [class.fav]="isFavorite()" [attr.aria-pressed]="isFavorite()"
+          aria-label="Toggle favorite">
+          <img src="/images/fav.svg" width="18" height="18" alt="" aria-hidden="true">
+        </button>
+
+        <button class="card-btn" (click)="emitEdit()" aria-label="Edit Item">
+          <img src="/images/edit.svg" width="18" height="18" alt="" aria-hidden="true">
+          <span class="card-stats-value">{{ 'buttons.edit' | translate }}</span>
+        </button>
+      </div>
+    </footer>
+    }
+  </section>
+  }
+</article>

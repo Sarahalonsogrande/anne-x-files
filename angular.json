@@ -6,12 +6,20 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "annes-birthday": {
+    "anne-x-files": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
-        }
+          "style": "scss",
+          "type": "component"
+        },
+        "@schematics/angular:directive": { "type": "directive" },
+        "@schematics/angular:service": { "type": "service" },
+        "@schematics/angular:guard": { "typeSeparator": "." },
+        "@schematics/angular:interceptor": { "typeSeparator": "." },
+        "@schematics/angular:module": { "typeSeparator": "." },
+        "@schematics/angular:pipe": { "typeSeparator": "." },
+        "@schematics/angular:resolver": { "typeSeparator": "." }
       },
       "root": "",
       "sourceRoot": "src",
@@ -27,11 +35,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets"
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -61,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "annes-birthday:build:production"
+              "buildTarget": "anne-x-files:build:production"
             },
             "development": {
-              "buildTarget": "annes-birthday:build:development"
+              "buildTarget": "anne-x-files:build:development"
             }
           },
           "defaultConfiguration": "development"

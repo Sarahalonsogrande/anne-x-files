@@ -1,0 +1,7 @@
+    .theming-btns {
+        display: flex;
+
+        button > img {
+            width: var(--btn-fab-diameter);
+        }
+    }

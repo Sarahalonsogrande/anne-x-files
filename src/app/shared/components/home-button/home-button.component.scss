@@ -1,0 +1,33 @@
+/*
+    Home Button Styles
+    --------------------------------------------------
+    - Styles for a home navigation button
+    - Similar to spin-button but with different animation
+*/
+
+@use '../../../shared/styles/button-styles' as buttons;
+
+// Main button styles
+.home-btn {
+    @include buttons.fab-button-base;
+    @include buttons.home-button-styles;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+// Animation for home button (e.g., bounce on click)
+.home-btn.animating .icon {
+    animation: bounce var(--home-duration) var(--home-easing) forwards;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

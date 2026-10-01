@@ -1,0 +1,66 @@
+{
+    "buttons": {
+        "save": "save",
+        "edit": "edit",
+        "add": "add",
+        "next": "next",
+        "back": "back",
+        "start": "start",
+        "finish": "finish",
+        "skip": "skip",
+        "reset": "reset"
+    },
+    "aria": {
+        "next": "Go to next step",
+        "back": "Go to previous step",
+        "start": "Start the process",
+        "finish": "Finish and continue",
+        "skip": "Skip this step",
+        "close": "Close dialog",
+        "openMenu": "Open menu",
+        "submit": "Submit form",
+        "cancel": "Cancel and go back",
+        "selectLanguage": "Select Language",
+        "selectTheme": "Select Theme"
+    },
+    "listTitles": {
+        "phobias": {
+            "title": "Phobias"
+        },
+        "kittycats": {
+            "title": "Kittycats"
+        }
+    },
+    "appTitles": {
+        "appTitle": "Anne X Files",
+        "welcomeTitle": "Welcome",
+        "itemTitle": "Item",
+        "listTitle": "List",
+        "createTitle": "Create",
+        "editTitle": "Edit"
+    },
+    "item": {
+        "title": "title",
+        "subtitle": "subtitle",
+        "level": "level",
+        "image": "image",
+        "description": "description",
+        "levels": {
+            "high": "high",
+            "medium": "medium",
+            "low": "low",
+            "funny": "funny",
+            "unknown": "unknown"
+        },
+        "fallbacks": {
+            "title": "Title",
+            "subtitle": "Subtitle",
+            "description": "Description"
+        }
+    },
+    "form": {
+        "choose": "Choose a list",
+        "create": "Or create a new one",
+        "newList": "New list"
+    }
+}
